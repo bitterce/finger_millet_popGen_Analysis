@@ -1,4 +1,5 @@
 # Finger millet - Data description 
+- All the data can be found on the f47 functional genomic server
 - Home directory with all the data (Sep. 2019 - Sep. 2021) 
 ```
 fgcz-c-047:/srv/kenlab/celine

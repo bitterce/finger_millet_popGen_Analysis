@@ -1,5 +1,9 @@
 #!/bin/bash
 
+##############################################################################
+## Run variant imputation on scaffold-seperated files
+##############################################################################
+
 source /usr/local/ngseq/etc/lmod_profile
 module add Variants/Beagle/5.1
 

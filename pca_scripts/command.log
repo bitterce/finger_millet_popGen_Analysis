@@ -1,0 +1,23 @@
+$ mkdir ~/work_dir/data/pca_results
+
+$ source /usr/local/ngseq/etc/lmod_profile
+$ module load Tools/PLINK/1.9beta6.5
+
+bitterce@fgcz-c-047:~/script_dir/pca_scripts
+
+# Working log for pca after beagle
+$ bash plink1_pca.sh ~/beagle/A_vcf_350/out/350_subA_imputed.vcf.gz ~/work_dir/data/pca_results/plink_350_subA_imputed
+$ bash plink1_pca.sh ~/beagle/B_vcf_350/out/350_subB_imputed.vcf.gz ~/work_dir/data/pca_results/plink_350_subB_imputed
+
+source /usr/local/ngseq/etc/lmod_profile
+module load Dev/Ruby/2.6.6
+
+ruby replace_sample_group.rb info_accession_loc.txt ~/work_dir/data/pca_results/plink_350_subA_imputed_pca.eigenvec > ~/work_dir/data/pca_results/plink_350_subA_imputed_pca.eigenv_new
+ruby replace_sample_group.rb info_accession_loc.txt ~/work_dir/data/pca_results/plink_350_subB_imputed_pca.eigenvec > ~/work_dir/data/pca_results/plink_350_subB_imputed_pca.eigenv_new
+
+# Working log for pca after pr202 filtering
+$ bash plink1_pca.sh ~/joint_genotyping/A_vcf_350/out/350_subA_joint_PR202_filtered.vcf.gz ~/work_dir/data/pca_results/plink_350_subA_pr202_filtered
+$ bash plink1_pca.sh ~/joint_genotyping/B_vcf_350/out/350_subB_joint_PR202_filtered.vcf.gz ~/work_dir/data/pca_results/plink_350_subB_pr202_filtered
+
+ruby replace_sample_group.rb info_accession_loc.txt ~/work_dir/data/pca_results/plink_350_subA_pr202_filtered_pca.eigenvec > ~/work_dir/data/pca_results/plink_350_subA_pr202_filtered_pca.eigenv_new
+ruby replace_sample_group.rb info_accession_loc.txt ~/work_dir/data/pca_results/plink_350_subB_pr202_filtered_pca.eigenvec > ~/work_dir/data/pca_results/plink_350_subB_pr202_filtered_pca.eigenv_new

@@ -1,0 +1,14 @@
+Job runs on fgcz-h-009
+at /scratch/BWA_again_reseq_high_cov32_on_v2r1B_2019-07-06--13-18-38_Eind_EC516242_temp3067
+loading EZ_GLOBAL_VARIABLES  from: /usr/local/ngseq/opt/EZ_GLOBAL_VARIABLES.txt
+Starting	EzAppBWA			BWA_again_reseq_high_cov32_on_v2r1B_2019-07-06--13-18-38_Eind_EC516242_temp3067	2019-07-06 16:16:19
+java -jar -Djava.io.tmpdir=. /usr/local/ngseq/packages/QC/Trimmomatic/0.36/trimmomatic-0.36.jar PE -threads 8 -phred33 /srv/gstore/projects/p1636/NextSeq500_20160302_NS32_o2030/20160302.A-diploid_R1.fastq.gz /srv/gstore/projects/p1636/NextSeq500_20160302_NS32_o2030/20160302.A-diploid_R2.fastq.gz trimmed-R1.fastq unpaired-R1.fastq trimmed-R2.fastq unpaired-R2.fastq ILLUMINACLIP:adapters.fa:1:20:7:5:true    AVGQUAL:10 MINLEN:20 > trimmomatic.out 2> trimmomatic.err
+cat trimmomatic.err >>Eind_EC516242_preprocessing.log
+mv trimmed-R1.fastq Eind_EC516242-trimmed-R1.fastq
+mv trimmed-R2.fastq Eind_EC516242-trimmed-R2.fastq
+bwa mem -M -t 8 /srv/GT/reference/Finger_millet/KEN/DENOVO_v2.0_B_subgenome/Sequence/BWAIndex/genome.fa /scratch/BWA_again_reseq_high_cov32_on_v2r1B_2019-07-06--13-18-38_Eind_EC516242_temp3067/Eind_EC516242-trimmed-R1.fastq /scratch/BWA_again_reseq_high_cov32_on_v2r1B_2019-07-06--13-18-38_Eind_EC516242_temp3067/Eind_EC516242-trimmed-R2.fastq 2> bwa.log | samtools view -S -b -  > aligned.bam
+samtools sort -l 9 -m 1400M -@ 8 aligned.bam -o Eind_EC516242.bam
+samtools index Eind_EC516242.bam
+Finished	EzAppBWA			BWA_again_reseq_high_cov32_on_v2r1B_2019-07-06--13-18-38_Eind_EC516242_temp3067	2019-07-07 01:21:28
+[1] "Success"
+__SCRIPT END__

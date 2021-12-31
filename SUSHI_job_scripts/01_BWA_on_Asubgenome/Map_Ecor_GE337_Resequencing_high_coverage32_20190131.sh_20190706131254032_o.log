@@ -1,0 +1,14 @@
+Job runs on fgcz-h-004
+at /scratch/BWA_again_reseq_high_cov32_on_v2r1A_2019-07-06--13-12-07_Ecor_GE337_temp32663
+loading EZ_GLOBAL_VARIABLES  from: /usr/local/ngseq/opt/EZ_GLOBAL_VARIABLES.txt
+Starting	EzAppBWA			BWA_again_reseq_high_cov32_on_v2r1A_2019-07-06--13-12-07_Ecor_GE337_temp32663	2019-07-06 13:13:04
+java -jar -Djava.io.tmpdir=. /usr/local/ngseq/packages/QC/Trimmomatic/0.36/trimmomatic-0.36.jar PE -threads 8 -phred33 /srv/gstore/projects/p1634/HiSeq4000_20170407_RUN340_o3234/20170407.B-GE337_R1.fastq.gz /srv/gstore/projects/p1634/HiSeq4000_20170407_RUN340_o3234/20170407.B-GE337_R2.fastq.gz trimmed-R1.fastq unpaired-R1.fastq trimmed-R2.fastq unpaired-R2.fastq ILLUMINACLIP:adapters.fa:1:20:7:5:true    AVGQUAL:10 MINLEN:20 > trimmomatic.out 2> trimmomatic.err
+cat trimmomatic.err >>Ecor_GE337_preprocessing.log
+mv trimmed-R1.fastq Ecor_GE337-trimmed-R1.fastq
+mv trimmed-R2.fastq Ecor_GE337-trimmed-R2.fastq
+bwa mem -M -t 8 /srv/GT/reference/Finger_millet/KEN/DENOVO_v2.0_A_subgenome/Sequence/BWAIndex/genome.fa /scratch/BWA_again_reseq_high_cov32_on_v2r1A_2019-07-06--13-12-07_Ecor_GE337_temp32663/Ecor_GE337-trimmed-R1.fastq /scratch/BWA_again_reseq_high_cov32_on_v2r1A_2019-07-06--13-12-07_Ecor_GE337_temp32663/Ecor_GE337-trimmed-R2.fastq 2> bwa.log | samtools view -S -b -  > aligned.bam
+samtools sort -l 9 -m 1400M -@ 8 aligned.bam -o Ecor_GE337.bam
+samtools index Ecor_GE337.bam
+Finished	EzAppBWA			BWA_again_reseq_high_cov32_on_v2r1A_2019-07-06--13-12-07_Ecor_GE337_temp32663	2019-07-06 16:49:38
+[1] "Success"
+__SCRIPT END__

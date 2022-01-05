@@ -18,6 +18,6 @@ Procedures
     - [09_filtering_SNPs_by_PR202_Bsubgenome ](https://github.com/bitterce/finger_millet_popGen_Analysis/tree/main/SUSHI_job_scripts/09_filtering_SNPs_by_PR202_Bsubgenome)
 
 Note
-- All the job scripts were generated on SUSHI (https://fgcz-sushi.uzh.ch/)
+- All the job scripts were generated on SUSHI (https://fgcz-sushi.uzh.ch/, [BMC Bioinformatics 17, 228 (2016)](https://doi.org/10.1186/s12859-016-1104-8))
 
 
